@@ -1,10 +1,9 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { useAppStore } from '../store/appStore';
 
 export default function Layout() {
   const { isConnected } = useAppStore();
-  const location = useLocation();
   
   const navItems = [
     { path: '/chat', icon: '🤖', label: 'AI Chat' },

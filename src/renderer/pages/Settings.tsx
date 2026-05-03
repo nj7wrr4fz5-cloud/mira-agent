@@ -6,7 +6,6 @@ export default function Settings() {
   const [apiKey, setApiKey] = useState('');
   const [autoUpdate, setAutoUpdate] = useState(true);
 
-
   useEffect(() => {
     if (window.electronAPI) {
       window.electronAPI.onUpdateStatus((status: any) => setUpdateStatus(status));
@@ -14,15 +13,11 @@ export default function Settings() {
   }, []);
 
   const checkUpdates = () => {
-    if (window.electronAPI) {
-      window.electronAPI.checkForUpdates();
-    }
+    if (window.electronAPI) window.electronAPI.checkForUpdates();
   };
 
   const installUpdate = () => {
-    if (window.electronAPI) {
-      window.electronAPI.installUpdate();
-    }
+    if (window.electronAPI) window.electronAPI.installUpdate();
   };
 
   return (
@@ -32,10 +27,10 @@ export default function Settings() {
         <p>Конфигурация приложения</p>
       </div>
       <div className="page-content">
-        <div className="grid grid-2">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
           <div className="card">
-            <div className="settings-section">
-              <h3 className="settings-title">Профиль</h3>
+            <div style={{ marginBottom: 32 }}>
+              <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--border-color)' }}>Профиль</h3>
               <div className="form-group">
                 <label className="form-label">Имя пользователя</label>
                 <input type="text" className="form-input" defaultValue="Александр" />
@@ -46,19 +41,19 @@ export default function Settings() {
               </div>
             </div>
 
-            <div className="settings-section">
-              <h3 className="settings-title">Подключения</h3>
-              <div className="setting-item">
-                <div className="setting-info">
-                  <h4>GitHub</h4>
-                  <p>Подключено: nj7wrr4fz5-cloud</p>
+            <div>
+              <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--border-color)' }}>Подключения</h3>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 0', borderBottom: '1px solid var(--border-color)' }}>
+                <div>
+                  <h4 style={{ fontSize: 15, fontWeight: 500, marginBottom: 4 }}>GitHub</h4>
+                  <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Подключено: nj7wrr4fz5-cloud</p>
                 </div>
                 <span style={{ color: 'var(--accent-success)' }}>✓</span>
               </div>
-              <div className="setting-item">
-                <div className="setting-info">
-                  <h4>Telegram</h4>
-                  <p>Подключено</p>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 0', borderBottom: '1px solid var(--border-color)' }}>
+                <div>
+                  <h4 style={{ fontSize: 15, fontWeight: 500, marginBottom: 4 }}>Telegram</h4>
+                  <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>Подключено</p>
                 </div>
                 <span style={{ color: 'var(--accent-success)' }}>✓</span>
               </div>
@@ -66,14 +61,20 @@ export default function Settings() {
           </div>
 
           <div className="card">
-            <div className="settings-section">
-              <h3 className="settings-title">Автообновление</h3>
-              <div className="setting-item">
-                <div className="setting-info">
-                  <h4>Автоматически проверять обновления</h4>
-                  <p>При запуске приложения</p>
+            <div style={{ marginBottom: 32 }}>
+              <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--border-color)' }}>Автообновление</h3>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 0', borderBottom: '1px solid var(--border-color)' }}>
+                <div>
+                  <h4 style={{ fontSize: 15, fontWeight: 500, marginBottom: 4 }}>Автоматически проверять обновления</h4>
+                  <p style={{ fontSize: 13, color: 'var(--text-secondary)' }}>При запуске приложения</p>
                 </div>
-                <div className={`toggle ${autoUpdate ? 'active' : ''}`} onClick={() => setAutoUpdate(!autoUpdate)}></div>
+                <div 
+                  className={`toggle ${autoUpdate ? 'active' : ''}`} 
+                  onClick={() => setAutoUpdate(!autoUpdate)}
+                  style={{ position: 'relative', width: 48, height: 26, background: 'var(--bg-tertiary)', borderRadius: 13, cursor: 'pointer', transition: 'all .2s' }}
+                >
+                  <div style={{ content: '', position: 'absolute', top: 3, left: 3, width: 20, height: 20, background: '#fff', borderRadius: '50%', transition: 'all .2s', left: autoUpdate ? 25 : 3 }}></div>
+                </div>
               </div>
               
               <div style={{ marginTop: 16 }}>
@@ -93,8 +94,8 @@ export default function Settings() {
               </div>
             </div>
 
-            <div className="settings-section">
-              <h3 className="settings-title">Соединение с Mira</h3>
+            <div>
+              <h3 style={{ fontSize: 18, fontWeight: 600, marginBottom: 16, paddingBottom: 12, borderBottom: '1px solid var(--border-color)' }}>Соединение с Mira</h3>
               <div className="form-group">
                 <label className="form-label">API Key (опционально)</label>
                 <input 

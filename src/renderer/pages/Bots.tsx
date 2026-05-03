@@ -11,11 +11,6 @@ export default function Bots() {
         <p>Управление Telegram-ботами</p>
       </div>
       <div className="page-content">
-        <div className="tabs">
-          <button className="tab active">Активные</button>
-          <button className="tab">Команды</button>
-        </div>
-
         <div className="card">
           <div className="card-header">
             <h3 className="card-title">Мои боты</h3>

@@ -11,12 +11,7 @@ export default function Statistics() {
         <p>Метрики и аналитика</p>
       </div>
       <div className="page-content">
-        <div className="tabs">
-          <button className="tab active">Графики</button>
-          <button className="tab">Отчёты</button>
-        </div>
-
-        <div className="grid grid-3" style={{ marginBottom: 24 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 24 }}>
           <div className="stat-card">
             <div className="stat-icon" style={{ background: 'rgba(99, 102, 241, 0.2)' }}>👥</div>
             <div className="stat-value">{groups.reduce((a, g) => a + g.members, 0)}</div>
@@ -34,7 +29,7 @@ export default function Statistics() {
           </div>
         </div>
 
-        <div className="grid grid-2">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
           <div className="card">
             <div className="card-header">
               <h3 className="card-title">Активность по дням</h3>

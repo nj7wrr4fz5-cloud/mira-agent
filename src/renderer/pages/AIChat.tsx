@@ -14,7 +14,6 @@ export default function AIChat() {
     addMessage(userMsg);
     setInput('');
     
-    // Simulate AI response
     setTimeout(() => {
       const aiMsg = { 
         id: (Date.now() + 1).toString(), 
@@ -29,15 +28,15 @@ export default function AIChat() {
   const getAIResponse = (text: string): string => {
     const lower = text.toLowerCase();
     if (lower.includes('привет') || lower.includes('hi')) return 'Привет! Рада видеть тебя! ✨';
-    if (lower.includes('помощь')) return 'Я могу помочь тебе с: написанием кода, анализом данных, созданием контента, и многим другим. Просто спроси!';
-    if (lower.includes('как дела')) return 'У меня всё отлично! Готова помочь тебе с задачами. А как у тебя дела?';
+    if (lower.includes('помощь')) return 'Я могу помочь тебе с: написанием кода, анализом данных, созданием контента. Просто спроси!';
+    if (lower.includes('как дела')) return 'У меня всё отлично! Готова помочь. А как у тебя дела?';
     return 'Интересный вопрос! Расскажи подробнее, и я постараюсь помочь.';
   };
 
   return (
     <>
       <div className="page-header">
-        <h2>🤖 AI Chat</h2>
+        <h2>💬 AI Chat</h2>
         <p>Общение с AI-ассистентом Mira</p>
       </div>
       <div className="page-content">

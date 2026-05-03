@@ -6,7 +6,7 @@ export default function Layout() {
   const { isConnected } = useAppStore();
   
   const navItems = [
-    { path: '/chat', icon: '🤖', label: 'AI Chat' },
+    { path: '/chat', icon: '💬', label: 'AI Chat' },
     { path: '/scheduler', icon: '📅', label: 'Планировщик' },
     { path: '/groups', icon: '👥', label: 'Группы' },
     { path: '/bots', icon: '🤖', label: 'Боты' },

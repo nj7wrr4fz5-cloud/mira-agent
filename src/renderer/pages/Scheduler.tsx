@@ -7,7 +7,6 @@ export default function Scheduler() {
   const [newMsg, setNewMsg] = useState({ message: '', time: '09:00', days: '1,2,3,4,5' });
 
   useEffect(() => {
-    // Load scheduled messages from electron store
     if (window.electronAPI) {
       window.electronAPI.getScheduledMessages().then(setScheduledMessages);
     }
@@ -42,11 +41,6 @@ export default function Scheduler() {
         <p>Запланируй отправку сообщений по расписанию</p>
       </div>
       <div className="page-content">
-        <div className="tabs">
-          <button className="tab active">Календарь</button>
-          <button className="tab">Шаблоны</button>
-        </div>
-
         <div className="card">
           <div className="card-header">
             <h3 className="card-title">Запланированные сообщения</h3>
@@ -66,7 +60,7 @@ export default function Scheduler() {
                   placeholder="Текст сообщения..."
                 />
               </div>
-              <div className="grid grid-2">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <div className="form-group">
                   <label className="form-label">Время</label>
                   <input 

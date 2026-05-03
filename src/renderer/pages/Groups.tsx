@@ -11,12 +11,7 @@ export default function Groups() {
         <p>Управление группами и каналами</p>
       </div>
       <div className="page-content">
-        <div className="tabs">
-          <button className="tab active">Список</button>
-          <button className="tab">Аналитика</button>
-        </div>
-
-        <div className="grid grid-2">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
           <div className="card">
             <div className="card-header">
               <h3 className="card-title">Мои группы</h3>
@@ -40,7 +35,7 @@ export default function Groups() {
             <div className="card-header">
               <h3 className="card-title">Статистика групп</h3>
             </div>
-            <div className="grid grid-2" style={{ gap: 16 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
               <div className="stat-card">
                 <div className="stat-icon" style={{ background: 'rgba(99, 102, 241, 0.2)' }}>👥</div>
                 <div className="stat-value">{groups.reduce((a, g) => a + g.members, 0)}</div>

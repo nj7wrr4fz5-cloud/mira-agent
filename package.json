@@ -12,7 +12,8 @@
     "build": "npm run build:renderer && npm run build:main",
     "build:renderer": "vite build",
     "build:main": "tsc -p tsconfig.main.json",
-    "package": "npm run build && electron-builder --win --x64"
+    "package": "npm run build && electron-builder --win --x64",
+    "package:portable": "npm run build && electron-builder --win --x64 --portable"
   },
   "dependencies": {
     "electron-log": "^5.2.0",
@@ -42,8 +43,13 @@
     "productName": "Mira Agent",
     "directories": { "output": "release" },
     "files": ["dist/**/*", "package.json"],
-    "win": { "target": [{"target": "nsis", "arch": ["x64"]}] },
-    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true },
+    "win": { 
+      "target": [
+        {"target": "portable", "arch": ["x64"]},
+        {"target": "dir", "arch": ["x64"]}
+      ] 
+    },
+    "portable": { "artifactName": "Mira-Agent-Portable.exe" },
     "publish": { "provider": "github", "owner": "nj7wrr4fz5-cloud", "repo": "mira-agent" }
   }
 }
